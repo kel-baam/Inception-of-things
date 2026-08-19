@@ -1,0 +1,31 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "debian/bookworm64"
+
+  # Server
+  config.vm.define "kel-baamS" do |server|
+    server.vm.hostname = "kel-baamS"
+
+    server.vm.network "private_network",
+      ip: "192.168.56.110"
+
+    server.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024
+      vb.cpus = 1
+    end
+  end
+
+  # ServerWorker
+  config.vm.define "kel-baamSW" do |worker|
+    worker.vm.hostname = "kel-baamSW"
+
+    worker.vm.network "private_network",
+      ip: "192.168.56.111"
+
+    worker.vm.provider "virtualbox" do |vb|
+      vb.memory = 1024
+      vb.cpus = 1
+    end
+  end
+
+end
