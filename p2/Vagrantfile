@@ -1,7 +1,4 @@
-# -*- mode: ruby -*-
-# vi: set ft=ruby :
 
-# ==> Set this to your 42 login (lowercase, no spaces)
 LOGIN = "kel-baam"
 
 BOX     = "debian/bookworm64"
@@ -22,7 +19,6 @@ Vagrant.configure("2") do |config|
       vb.cpus   = 2
     end
 
-    # sync the confs/ folder so kubectl apply can read the manifests
     server.vm.synced_folder "confs", "/vagrant/confs"
 
     server.vm.provision "shell", path: "scripts/server.sh", args: [SERVER_IP]
